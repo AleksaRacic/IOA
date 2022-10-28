@@ -1,0 +1,5 @@
+Brentova metoda
+Pocetne tacke: 3.5, 4.0, 4.5
+
+Maximum funkcije: 
+delta:  4.061743978132399 |Fs(delta)|:  4.999999999999902
