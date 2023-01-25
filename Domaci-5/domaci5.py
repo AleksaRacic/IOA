@@ -32,16 +32,21 @@ def opt_f(weights):
     return sum/cnt
 
 if __name__ == "__main__":
-    random.seed(10)
+    random.seed(11)
     weights = [random.random()*10 - 5 for _ in range(16)]
-    res = minimize(opt_f, weights, method='Nelder-Mead', tol=1e-7, bounds=Bounds(-5,5), options={'maxiter': 150000, 'disp': True})
-    
+    fun = 5
+    while(fun > 1e-4):
+        res = minimize(opt_f, weights, method='Nelder-Mead', tol=1e-4, bounds=Bounds(-5,5))
+        print(res.fun)
+        weights = res.x
+    print(res.x)
     x = np.arange(-1, 1.01, 0.02)
     Y_training = [y_training(x_in) for x_in in x]
     Y_out = [y_out(x_in, res.x) for x_in in x]
     plt.plot(x, Y_training, color='red', label='y_training')
     plt.plot(x, Y_out, color='blue', label='y_out')
-    plt.show()
+    plt.legend()
+    #plt.show()
     plt.savefig('domaci5.png')
 
 
